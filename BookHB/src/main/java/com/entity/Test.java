@@ -13,7 +13,8 @@ public class Test {
 		
 		while(true) {
 			System.out.println("\n---------Book Management---------");
-			System.out.print("\n1.Add Book\n2.Retrieve books\n3.Retrieve book by name\n4.Update Book by Id\n5.Delete book by Id\n6.Exit\nYour choice:");
+			System.out.print("\n1.Add Book\n2.Retrieve books\n3.Retrieve book by name\n4.Update Book by Id\n5.Delete book by Id\n6.Fix minimum price\n"
+					+ "7.Total no. of books by author\n8.Exit\nYour choice:");
 			int ch = sc.nextInt(); sc.nextLine();
 			List<Book> list;
 			
@@ -91,7 +92,15 @@ public class Test {
                     dao.deleteBook(deleteId);
                     System.out.println("Book deleted successfully!");
                     break;
-				case 6:
+                case 6:
+                	System.out.print("Enter minimum price: ");
+                	dao.minimumPrice(sc.nextFloat());
+                	break;
+                case 7:
+                	System.out.print("Enter author name: ");
+                	dao.fetchByAuthor(sc.nextLine());
+                	break;
+				case 8:
 					System.out.println("\nExiting.......");
 					sc.close();
 					break;

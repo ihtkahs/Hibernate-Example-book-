@@ -80,5 +80,18 @@ public class BookDAO {
             tr.commit();
         }
     }
+	
+	public void minimumPrice(float p) {
+		try(Session session = DBUtil.getSessionFactory().openSession()) {
+            tr = session.beginTransaction();
+
+            Query<Book> qry = session.createQuery("from Book where price > :price", Book.class);
+            qry.setParameter("price", p);
+			List<Book> list = qry.getResultList();
+			list.forEach(b -> System.out.println(b));
+            
+            tr.commit();
+        }
+	}
 
 }
